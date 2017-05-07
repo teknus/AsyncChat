@@ -91,7 +91,7 @@ class Server(object):
     def enter_in_channel(self, chan, peer):
         try:
             self._channels[chan].append(peer)
-            self.broadcast_chan("{} connected in {}".format(peer.name.decode(),chan), peer, chan)
+            self.broadcast_chan("User {} connected in {}".format(peer.name.decode(),chan), peer, chan)
             self.echo("Connected in {}".format(chan),peer)
         except KeyError:
             peer.echo("There is no channel {}".format(chan),peer)
@@ -116,8 +116,7 @@ class Server(object):
             peer = Peer(self, peer_sock, name)
             self._channels['NoneConnection\n'].append(peer)
             self._peers.append(peer)
-            for user in self._channels['NoneConnection\n']:
-                self.broadcast('Peer {} connected!\n'.format(name.decode()),user)
+            #self.broadcast_chan('Peer {} connected!\n'.format(name.decode()),user,'NoneConnection\n')
             self.echo("commands\n/join <nome do canal>\n/create <nome do canal>\n/out <sair canal>\n/whereami\n/list\n",peer)
 
 def main():
