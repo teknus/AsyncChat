@@ -116,7 +116,6 @@ class Server(object):
             peer = Peer(self, peer_sock, name)
             self._channels['NoneConnection\n'].append(peer)
             self._peers.append(peer)
-            #self.broadcast_chan('Peer {} connected!\n'.format(name.decode()),user,'NoneConnection\n')
             self.echo("commands\n/join <nome do canal>\n/create <nome do canal>\n/out <sair canal>\n/whereami\n/list\n",peer)
 
 def main():
